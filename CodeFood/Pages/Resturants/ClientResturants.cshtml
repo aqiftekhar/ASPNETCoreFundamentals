@@ -1,0 +1,47 @@
+﻿@page
+@model CodeFood.Pages.Resturants.ClientResturantsModel
+@{
+}
+
+<h2>Client Resturants</h2>
+
+<table class="table" id="resturants">
+
+</table>
+@section Scripts {
+
+    <environment include="Development">
+        <script src="~/lib/DataTables/js/jquery.dataTables.js"></script>
+        <script src="~/lib/DataTables/js/dataTables.bootstrap4.js"></script>
+        <link href="~/lib/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    </environment>
+
+    <environment exclude="Development">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.css" />
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>
+    </environment>
+
+
+    <script>
+        $(function () {
+            var cuisine = ["None", "FastFood", "Mexican", "Italian", "Pakistani"];
+
+            $.ajax("/api/resturants/",
+                { method: "get" })
+                .then(function (response) {
+                    $("#resturants").dataTable({
+                        data: response,
+                        columns: [
+                            { "data": "name" },
+                            { "data": "location" },
+                            {
+                                "data": "cuisine", "render": function (data) {
+                                    return cuisine[data];
+                                }
+                            }
+                        ]
+                    });
+                })
+        });
+    </script>
+}
