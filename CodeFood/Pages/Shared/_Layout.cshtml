@@ -35,15 +35,19 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <vc:resturant-count></vc:resturant-count>
+
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            <vc:resturant-count></vc:resturant-count>
+            
             @RenderSection("footer", required: false)
             &copy; 2022 - CodeFood - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <img src="/codeFood.png" width="160"/>
+
         </div>
     </footer>
 

@@ -12,6 +12,6 @@ namespace CodeFood.Data
         Resturant Update(Resturant resturant);
         Resturant Delete(int id);
         int GetCountOfResturants();
-        int Commit();
+        int Commit(); 
     }
 }
