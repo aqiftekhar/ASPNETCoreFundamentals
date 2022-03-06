@@ -1,0 +1,69 @@
+﻿@page 
+@model CodeFood.Pages.Resturants.ListModel
+@{
+}
+
+<h1> Resturants </h1>
+
+<form method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control" value="" asp-for="SearchTerms" />
+            <span class="input-group-btn">
+                <button class="btn btn-default">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </span>
+
+        </div>
+    </div>
+</form>
+
+@*<table class="table">
+    <tr>
+        <th>Resturant Name</th>
+        <th>Resturant Location</th>
+        <th>Cuisine Type</th>
+    </tr>
+    @foreach (var item in Model.Resturants)
+    {
+<tr>
+    <td>
+        @item.Name
+    </td>
+    <td>
+        @item.Location
+    </td>
+    <td>
+        @item.Cuisine
+    </td>
+    <td>
+        <a class="btnbtn-lg" asp-page="./Details" asp-route-resturantId="@item.Id">
+            <i class="glyphicon glyphicon-zoom-in"></i>
+        </a>
+
+        <a class="btnbtn-lg" asp-page="./Edit" asp-route-resturantId="@item.Id">
+            <i class="glyphicon glyphicon-edit"></i>
+        </a>
+
+        <a class="btnbtn-lg" asp-page="./Delete" asp-route-resturantId="@item.Id">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </td>
+   
+
+</tr>
+
+    }
+</table>*@
+
+@foreach (var item in Model.Resturants)
+{
+    <partial name="_Summary" model="@item"/>
+}
+<a asp-page="./Edit" class="btn btn-primary">Add New Resturant</a>
+
+@section footer {
+    <div>@Model.Message - @Model.Copyright</div>
+}
+
